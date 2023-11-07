@@ -2,8 +2,13 @@ import { useRef } from "react"
 import { Button, Col, Form, Row, Stack } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import CreatableReactSelect from "react-select/creatable"
+import { NoteData, Tag } from "./App"
 
-export function NoteForm() {
+type NoteFormProps = {
+  onSubmit: (data: NoteData) => void
+}
+
+export function NoteForm({ onSubmit }: NoteFormProps) {
   const titleRef = useRef<HTMLInputElement>(null)
   const markdownRef = useRef<HTMLTextAreaElement>(null)
   return (
