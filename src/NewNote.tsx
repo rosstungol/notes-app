@@ -1,7 +1,7 @@
 export function NewNote() {
   return (
     <>
-      <h1>New Note</h1>
+      <h1 className='mb-4'>New Note</h1>
     </>
   )
 }
