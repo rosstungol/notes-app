@@ -3,12 +3,20 @@ import { Button, Col, Form, Row, Stack } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import ReactSelect from "react-select"
 import { Tag } from "./App"
+import styles from "./NoteList.module.css"
+
+type SimplifiedNote = {
+  tags: Tag[]
+  title: string
+  id: string
+}
 
 type NoteListProps = {
   availableTags: Tag[]
+  notes: SimplifiedNote[]
 }
 
-export function NoteList({ availableTags }: NoteListProps) {
+export function NoteList({ availableTags, notes }: NoteListProps) {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([])
   const [title, setTitle] = useState("")
 
