@@ -180,10 +180,19 @@ function EditTagsModal({
               return (
                 <Row key={tag.id}>
                   <Col>
-                    <Form.Control type='text' value={tag.label} />
+                    <Form.Control
+                      type='text'
+                      value={tag.label}
+                      onChange={(e) => onUpdateTag(tag.id, e.target.value)}
+                    />
                   </Col>
                   <Col xs='auto'>
-                    <Button variant='outline-danger'>&times;</Button>
+                    <Button
+                      variant='outline-danger'
+                      onClick={() => onDeleteTag(tag.id)}
+                    >
+                      &times;
+                    </Button>
                   </Col>
                 </Row>
               )
