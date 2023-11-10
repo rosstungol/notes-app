@@ -9,12 +9,19 @@ type NoteFormProps = {
   onSubmit: (data: NoteData) => void
   onAddTag: (tag: Tag) => void
   availableTags: Tag[]
-}
+} & Partial<NoteData>
 
-export function NoteForm({ onSubmit, onAddTag, availableTags }: NoteFormProps) {
+export function NoteForm({
+  onSubmit,
+  onAddTag,
+  availableTags,
+  title = "",
+  markdown = "",
+  tags = []
+}: NoteFormProps) {
   const titleRef = useRef<HTMLInputElement>(null)
   const markdownRef = useRef<HTMLTextAreaElement>(null)
-  const [selectedTags, setSelectedTags] = useState<Tag[]>([])
+  const [selectedTags, setSelectedTags] = useState<Tag[]>(tags)
   const navigate = useNavigate()
 
   function handleSubmit(e: FormEvent) {
