@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import ReactSelect from "react-select"
 import { EditTagsModal } from "./EditTagsModal"
 import { NoteCard } from "./NoteCard"
+import { BlankSlate } from "./BlankSlate"
 import { Tag } from "../App"
 
 export type SimplifiedNote = {
@@ -41,6 +42,22 @@ export function NoteList({
       )
     })
   }, [title, selectedTags, notes])
+
+  const displayNotes =
+    filteredNotes.length > 0 ? (
+      <Row xs={1} sm={2} lg={3} xl={4} className='g-3'>
+        {filteredNotes.map((note) => (
+          <Col key={note.id}>
+            <NoteCard id={note.id} title={note.title} tags={note.tags} />
+          </Col>
+        ))}
+      </Row>
+    ) : (
+      <BlankSlate
+        header='No notes yet'
+        body='Create a new note to get started!'
+      />
+    )
 
   return (
     <>
@@ -97,13 +114,9 @@ export function NoteList({
           </Col>
         </Row>
       </Form>
-      <Row xs={1} sm={2} lg={3} xl={4} className='g-3'>
-        {filteredNotes.map((note) => (
-          <Col key={note.id}>
-            <NoteCard id={note.id} title={note.title} tags={note.tags} />
-          </Col>
-        ))}
-      </Row>
+
+      {displayNotes}
+
       <EditTagsModal
         show={editTagsModalIsOpen}
         handleClose={() => setEditTagsModalIsOpen(false)}
