@@ -1,7 +1,7 @@
 import { Badge, Card, Stack } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { SimplifiedNote } from "./NoteList"
-import styles from "../styles/NoteList.module.css"
+import styles from "../assets/styles/NoteCard.module.css"
 
 export function NoteCard({ id, title, tags }: SimplifiedNote) {
   return (
