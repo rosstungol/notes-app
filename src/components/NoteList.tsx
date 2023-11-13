@@ -61,11 +61,11 @@ export function NoteList({
 
   return (
     <>
-      <Row className='align-items-center mb-4'>
+      <Row className='mb-4'>
         <Col>
           <h1>Notes</h1>
         </Col>
-        <Col xs='auto'>
+        <Col xs='auto' className='mt-2'>
           <Stack gap={2} direction='horizontal'>
             <Link to='/new'>
               <Button variant='primary'>Create</Button>

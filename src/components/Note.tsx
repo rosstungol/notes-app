@@ -13,7 +13,7 @@ export function Note({ onDelete }: NoteProps) {
 
   return (
     <>
-      <Row className='align-items-center mb-4'>
+      <Row className='mb-4'>
         <Col>
           <h1>{note.title}</h1>
           {note.tags.length > 0 && (
@@ -22,11 +22,11 @@ export function Note({ onDelete }: NoteProps) {
                 <Badge key={tag.id} className='text-truncate'>
                   {tag.label}
                 </Badge>
-              ))}{" "}
+              ))}
             </Stack>
           )}
         </Col>
-        <Col xs='auto'>
+        <Col xs='auto' className='mt-2'>
           <Stack gap={2} direction='horizontal'>
             <Link to={`/${note.id}/edit`}>
               <Button variant='primary'>Edit</Button>
