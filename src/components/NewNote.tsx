@@ -1,5 +1,7 @@
-import { NoteData, Tag } from "../App"
+import { Link } from "react-router-dom"
+import { Col, Row } from "react-bootstrap"
 import { NoteForm } from "./NoteForm"
+import { NoteData, Tag } from "../App"
 
 type NewNoteProps = {
   onSubmit: (data: NoteData) => void
@@ -10,7 +12,20 @@ type NewNoteProps = {
 export function NewNote({ onSubmit, onAddTag, availableTags }: NewNoteProps) {
   return (
     <>
-      <h1 className='mb-4'>New Note</h1>
+      <Row className='mb-4'>
+        <Col>
+          <h1>New Note</h1>
+        </Col>
+        <Col xs='auto' className='mt-2'>
+          <Link
+            to='https://www.markdownguide.org/cheat-sheet/'
+            target='_blank'
+            className='text-info'
+          >
+            Markdown Cheat Sheet
+          </Link>
+        </Col>
+      </Row>
       <NoteForm
         onSubmit={onSubmit}
         onAddTag={onAddTag}
