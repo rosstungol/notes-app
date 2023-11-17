@@ -43,22 +43,6 @@ export function NoteList({
     })
   }, [title, selectedTags, notes])
 
-  const displayNotes =
-    filteredNotes.length > 0 ? (
-      <Row xs={1} sm={2} lg={3} xl={4} className='g-3'>
-        {filteredNotes.map((note) => (
-          <Col key={note.id}>
-            <NoteCard id={note.id} title={note.title} tags={note.tags} />
-          </Col>
-        ))}
-      </Row>
-    ) : (
-      <BlankSlate
-        header='No notes yet'
-        body='Create a new note to get started!'
-      />
-    )
-
   return (
     <>
       <Row className='mb-4'>
@@ -115,7 +99,7 @@ export function NoteList({
         </Row>
       </Form>
 
-      {displayNotes}
+      <NoteListBody filteredNotes={filteredNotes} title={title} />
 
       <EditTagsModal
         show={editTagsModalIsOpen}
@@ -125,5 +109,40 @@ export function NoteList({
         onDeleteTag={onDeleteTag}
       />
     </>
+  )
+}
+
+type NoteListBodyProps = {
+  filteredNotes: SimplifiedNote[]
+  title: string
+}
+
+function NoteListBody({ filteredNotes, title }: NoteListBodyProps) {
+  if (filteredNotes.length === 0 && title)
+    return (
+      <BlankSlate
+        header='No notes found'
+        body='Your search term did not match any notes.'
+      />
+    )
+  if (filteredNotes.length === 0)
+    return (
+      <BlankSlate
+        header='No notes yet'
+        body='Create a new note to get started!'
+      >
+        <Link to='/new'>
+          <Button variant='primary'>Create</Button>
+        </Link>
+      </BlankSlate>
+    )
+  return (
+    <Row xs={1} sm={2} lg={3} xl={4} className='g-3'>
+      {filteredNotes.map((note) => (
+        <Col key={note.id}>
+          <NoteCard id={note.id} title={note.title} tags={note.tags} />
+        </Col>
+      ))}
+    </Row>
   )
 }
