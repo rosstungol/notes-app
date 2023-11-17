@@ -72,8 +72,8 @@ export function NoteList({
         </Col>
       </Row>
       <Form className='mb-4'>
-        <Row>
-          <h6>Search</h6>
+        <h6>Search</h6>
+        <Row xs={1} lg={2}>
           <Col>
             <Form.Group controlId='title'>
               <Form.Label>Title</Form.Label>

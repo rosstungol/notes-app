@@ -39,7 +39,7 @@ export function NoteForm({
   return (
     <Form onSubmit={handleSubmit}>
       <Stack gap={4}>
-        <Row>
+        <Row xs={1} lg={2}>
           <Col>
             <Form.Group controlId='title'>
               <Form.Label>Title</Form.Label>
