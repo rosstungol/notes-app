@@ -2,9 +2,8 @@ import { useMemo, useState } from "react"
 import { Button, Col, Form, Row, Stack } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import ReactSelect from "react-select"
+import { NoteListBody } from "./NoteListBody"
 import { EditTagsModal } from "./EditTagsModal"
-import { NoteCard } from "./NoteCard"
-import { BlankSlate } from "./BlankSlate"
 import { Tag } from "../App"
 
 export type SimplifiedNote = {
@@ -109,40 +108,5 @@ export function NoteList({
         onDeleteTag={onDeleteTag}
       />
     </>
-  )
-}
-
-type NoteListBodyProps = {
-  filteredNotes: SimplifiedNote[]
-  title: string
-}
-
-function NoteListBody({ filteredNotes, title }: NoteListBodyProps) {
-  if (filteredNotes.length === 0 && title)
-    return (
-      <BlankSlate
-        header='No notes found'
-        body='Your search term did not match any notes.'
-      />
-    )
-  if (filteredNotes.length === 0)
-    return (
-      <BlankSlate
-        header='No notes yet'
-        body='Create a new note to get started!'
-      >
-        <Link to='/new'>
-          <Button variant='primary'>Create</Button>
-        </Link>
-      </BlankSlate>
-    )
-  return (
-    <Row xs={1} sm={2} lg={3} xl={4} className='g-3'>
-      {filteredNotes.map((note) => (
-        <Col key={note.id}>
-          <NoteCard id={note.id} title={note.title} tags={note.tags} />
-        </Col>
-      ))}
-    </Row>
   )
 }
