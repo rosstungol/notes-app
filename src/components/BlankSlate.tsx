@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom"
-import { Button, Col, Row } from "react-bootstrap"
+import { Col, Row } from "react-bootstrap"
 import noNote from "../assets/images/file-search.svg"
 
 type BlankSlateProps = {
