@@ -109,7 +109,6 @@ export function NoteList({
                     ...baseStyles,
                     ...customSelectStyles,
                     ...(state.isDisabled && disabledSelect)
-                    //
                   })
                 }}
               />

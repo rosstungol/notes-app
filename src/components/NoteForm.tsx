@@ -1,9 +1,10 @@
 import { FormEvent, useRef, useState } from "react"
-import { Button, Col, Form, Row, Stack } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
+import { Button, Col, Form, Row, Stack } from "react-bootstrap"
 import CreatableReactSelect from "react-select/creatable"
-import { NoteData, Tag } from "../App"
+import { CSSObjectWithLabel } from "react-select"
 import { v4 as uuidV4 } from "uuid"
+import { NoteData, Tag } from "../App"
 
 type NoteFormProps = {
   onSubmit: (data: NoteData) => void
@@ -34,6 +35,11 @@ export function NoteForm({
     })
 
     navigate("..")
+  }
+
+  const customSelectStyles: CSSObjectWithLabel = {
+    borderColor: "#dee2e6",
+    borderRadius: "6px"
   }
 
   return (
@@ -69,6 +75,12 @@ export function NoteForm({
                   )
                 }}
                 isMulti
+                styles={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                    ...customSelectStyles
+                  })
+                }}
               />
             </Form.Group>
           </Col>
