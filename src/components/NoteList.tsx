@@ -42,6 +42,8 @@ export function NoteList({
     })
   }, [title, selectedTags, notes])
 
+  const disabledSearchInput = notes.length === 0 && true
+
   return (
     <>
       <Row className='mb-4'>
@@ -72,6 +74,7 @@ export function NoteList({
                 type='text'
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                disabled={disabledSearchInput}
               />
             </Form.Group>
           </Col>
@@ -93,6 +96,7 @@ export function NoteList({
                   )
                 }}
                 isMulti
+                isDisabled={disabledSearchInput}
               />
             </Form.Group>
           </Col>
