@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react"
 import { Button, Col, Form, Row, Stack } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import ReactSelect from "react-select"
+import ReactSelect, { CSSObjectWithLabel } from "react-select"
 import { NoteListBody } from "./NoteListBody"
 import { EditTagsModal } from "./EditTagsModal"
 import { Tag } from "../App"
@@ -43,6 +43,13 @@ export function NoteList({
   }, [title, selectedTags, notes])
 
   const disabledSearchInput = notes.length === 0 && true
+  const disabledSelect: CSSObjectWithLabel = {
+    backgroundColor: "#e9ecef"
+  }
+  const customSelectStyles: CSSObjectWithLabel = {
+    borderColor: "#dee2e6",
+    borderRadius: "6px"
+  }
 
   return (
     <>
@@ -97,6 +104,14 @@ export function NoteList({
                 }}
                 isMulti
                 isDisabled={disabledSearchInput}
+                styles={{
+                  control: (baseStyles, state) => ({
+                    ...baseStyles,
+                    ...customSelectStyles,
+                    ...(state.isDisabled && disabledSelect)
+                    //
+                  })
+                }}
               />
             </Form.Group>
           </Col>
