@@ -64,6 +64,7 @@ export function NoteList({
       </Row>
       <Form className='mb-4'>
         <Row>
+          <h5>Search</h5>
           <Col>
             <Form.Group controlId='title'>
               <Form.Label>Title</Form.Label>
