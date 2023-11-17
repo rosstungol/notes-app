@@ -76,7 +76,7 @@ export function NoteForm({
                 }}
                 isMulti
                 styles={{
-                  control: (baseStyles, state) => ({
+                  control: (baseStyles) => ({
                     ...baseStyles,
                     ...customSelectStyles
                   })
