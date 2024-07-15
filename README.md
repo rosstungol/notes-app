@@ -1,6 +1,6 @@
 ## Notes App
 
-[Live demo](https://rosstungol.github.io/notes-app)
+[Live demo](https://notes-app-beta-ten.vercel.app/)
 
 A note-taking app built with React and TypeScript.
 
